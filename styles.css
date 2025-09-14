@@ -1,0 +1,128 @@
+/* styles.css — simple, modern styles for QuoteSpark */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg1: #0f172a;
+  --accent: #2b7cff;
+  --accent-2: #6a11cb;
+  --card: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.06);
+  --text: #e6eef8;
+  --muted: #aab3c8;
+  --success: #22c55e;
+  --maxw: 1000px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background: linear-gradient(180deg,var(--bg1) 0%, #08102b 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* Topbar */
+.topbar{
+  padding:18px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+.brand{font-weight:700;margin:0;font-size:1.05rem;color:var(--accent)}
+.tag{margin:4px 0 0;color:var(--muted);font-size:0.9rem}
+
+/* Page layout */
+.page{min-height:calc(100vh - 140px);display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start}
+
+/* Hero / Card */
+.hero{display:flex;align-items:center;justify-content:center;padding:56px 16px}
+.card{
+  width:100%;
+  max-width:720px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius:14px;
+  padding:28px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: transform .28s ease, box-shadow .28s ease, opacity .25s;
+  text-align:center;
+}
+
+/* Quote */
+blockquote{
+  margin:0 0 14px 0;
+  font-weight:600;
+  font-size:1.4rem;
+  line-height:1.35;
+  color:var(--text);
+  quotes: "“" "”" "‘" "’";
+}
+blockquote::before{content: "“"; color: var(--accent); margin-right:6px; font-size:2rem; vertical-align: middle}
+blockquote::after{content: "”"; display:none}
+cite{
+  display:block;
+  color:var(--muted);
+  margin-bottom:16px;
+  font-size:0.95rem;
+  font-weight:600;
+}
+
+/* Controls */
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:8px}
+.btn{
+  border:0;
+  background:transparent;
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  transition: transform .14s ease, background .14s ease, box-shadow .14s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn.primary{
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:white;
+  box-shadow: 0 8px 18px rgba(43,124,255,0.14);
+  padding:10px 16px;
+}
+.btn .fa-sync-alt{transform-origin:center}
+
+/* small icon buttons */
+.small-actions{display:flex;gap:8px}
+.btn[aria-label]{width:44px;height:44px;padding:0;justify-content:center}
+
+/* hint */
+.hint{margin-top:12px;color:var(--muted);font-size:0.85rem}
+
+/* About section */
+.about-section{padding:28px 16px 56px;color:var(--muted)}
+.about-inner{max-width:800px;margin:0 auto;text-align:center}
+.about-inner h2{color:var(--text);margin-bottom:8px}
+.about-inner p.meta{opacity:0.9;margin-top:8px;color:var(--muted)}
+
+/* Footer */
+.footer{padding:18px 16px;border-top:1px solid rgba(255,255,255,0.03);text-align:center;color:var(--muted)}
+
+/* Animations */
+.fade-in{animation: fadeIn .48s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Responsive */
+@media (max-width:720px){
+  .card{padding:20px;border-radius:12px}
+  blockquote{font-size:1.15rem}
+  .controls{gap:10px}
+}
